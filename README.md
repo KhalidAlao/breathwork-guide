@@ -18,7 +18,7 @@ Modern UI – Styled with CSS and Framer Motion for smooth animations.
 
 Demo
 
-Live Demo (Add link if hosted online)
+Live Demo https://khalidalao.github.io/breathwork-guide/
 
 Technologies Used
 
