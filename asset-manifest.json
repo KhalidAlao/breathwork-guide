@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/KhalidAlao/breathwork-guide/static/css/main.834adae9.css",
+    "main.js": "/KhalidAlao/breathwork-guide/static/js/main.2f69e40e.js",
+    "static/js/453.0095e093.chunk.js": "/KhalidAlao/breathwork-guide/static/js/453.0095e093.chunk.js",
+    "index.html": "/KhalidAlao/breathwork-guide/index.html",
+    "main.834adae9.css.map": "/KhalidAlao/breathwork-guide/static/css/main.834adae9.css.map",
+    "main.2f69e40e.js.map": "/KhalidAlao/breathwork-guide/static/js/main.2f69e40e.js.map",
+    "453.0095e093.chunk.js.map": "/KhalidAlao/breathwork-guide/static/js/453.0095e093.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.834adae9.css",
+    "static/js/main.2f69e40e.js"
+  ]
+}
