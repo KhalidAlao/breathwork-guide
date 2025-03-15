@@ -23,132 +23,48 @@ const [timeLeft, setTimeLeft] = useState(0);
   const [exhaleTime, setExhaleTime] = useState(8);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Sequence of phases
+  const phases = [
+    { phase: 'inhale', duration: inhaleTime },
+    { phase: 'hold', duration: holdTime },
+    { phase: 'exhale', duration: exhaleTime },
+  ];
+
+
+    // Reference to track the current phase index in the cycle
+    const phaseIndexRef = useRef(0);
+    // Reference to the timer interval
+    const intervalRef = useRef(null);
+
+
+// Function to start the breathing session
+const startBreathing = () => {
+  // Ensure that breathing times are greater than zero
+  if (inhaleTime <= 0) {
+    alert("Please input a value greater than zero for the breathe in timer.");
+    return;
+  }
+  if (exhaleTime <= 0) {
+    alert("Please input a value greater than zero for the breathe out timer.");
+    return;
+  }
+
+
+  setIsBreathing(true);
+  // Start at the first phase
+  phaseIndexRef.current = 0;
+  setBreathPhase(phases[phaseIndexRef.current].phase);
+  setTimeLeft(phases[phaseIndexRef.current].duration);
+};
+
+
+// Function to stop the session 
+const stopBreathing = () => {
+  setIsBreathing(false);
+  if (intervalRef.current) {
+    clearInterval(intervalRef.current);
+  }
+};
 
 
 
