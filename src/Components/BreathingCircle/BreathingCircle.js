@@ -18,6 +18,22 @@ const BreathingCircle = ({ isBreathing, breathPhase, timeLeft }) => {
     currentVariant = "exhale"; // default to resting state when not active
   }
 
+  return (
+    <div style={{ margin: '2rem auto', width: '200px', height: '200px' }}>
+      <motion.div 
+        variants={variants}
+        animate={currentVariant}
+        style={{
+          width: '100%',
+          height: '100%',
+          borderRadius: '50%',
+          background: 'lightblue',
+          margin: '0 auto'
+        }}
+      />
+    </div>
+  );
+};
 
 
 
