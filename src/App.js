@@ -85,24 +85,29 @@ const stopBreathing = () => {
  useEffect(() => {
   if (!isBreathing || hold) return;
 
-  // Start an interval timer that decrements the time left every second
   intervalRef.current = setInterval(() => {
     setTimeLeft((prevTime) => {
       if (prevTime <= 1) {
-        clearInterval(intervalRef.current);
-        phaseIndexRef.current = (phaseIndexRef.current + 1) % phases.length;
-        const nextPhase = phases[phaseIndexRef.current];
-        setBreathPhase(nextPhase.phase);
-        setTimeLeft(nextPhase.duration);
-        return nextPhase.duration;
+        // Move to the next phase in order
+        if (breathPhase === "inhale") {
+          setBreathPhase("hold");
+          setTimeLeft(holdTime);
+        } else if (breathPhase === "hold") {
+          setBreathPhase("exhale");
+          setTimeLeft(exhaleTime);
+        } else {
+          // After exhale, restart the cycle with inhale
+          setBreathPhase("inhale");
+          setTimeLeft(inhaleTime);
+        }
+        return 0; // Reset previous phase timer
       }
       return prevTime - 1;
     });
   }, 1000);
 
   return () => clearInterval(intervalRef.current);
-}, [isBreathing, hold, timeLeft, inhaleTime, holdTime, exhaleTime, phases]);
-
+}, [isBreathing, hold, breathPhase, inhaleTime, holdTime, exhaleTime]);
 
 return (
   <div className="appContainer">
