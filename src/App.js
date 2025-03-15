@@ -67,15 +67,63 @@ const stopBreathing = () => {
 };
 
 
-
-
-
-
-
-
-
+ // Pause/Resume current phase
+ const toggleHold = () => {
+  if (hold) {
+    setHold(false);
+  } else {
+    setHold(true);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+  }
 };
 
 
+ // Manage the countdown and phase transitions
+ useEffect(() => {
+  if (!isBreathing || hold) return;
+
+  // Start an interval timer that decrements the time left every second
+  intervalRef.current = setInterval(() => {
+    setTimeLeft((prevTime) => {
+      if (prevTime <= 1) {
+        clearInterval(intervalRef.current);
+        // Move to the next phase in the cycle
+        phaseIndexRef.current = (phaseIndexRef.current + 1) % phases.length;
+        const nextPhase = phases[phaseIndexRef.current];
+        setBreathPhase(nextPhase.phase);
+        setTimeLeft(nextPhase.duration);
+        return nextPhase.duration;
+      }
+      return prevTime - 1;
+    });
+  }, 1000);
+
+  return () => clearInterval(intervalRef.current);
+}, [isBreathing, hold, timeLeft, inhaleTime, holdTime, exhaleTime]);
+
+
+
+return (
+  <div style={{ textAlign: 'center', padding: '2rem' }}>
+    <h1>Breath Work Guide</h1>
+    <BreathingCircle 
+      isBreathing={isBreathing} 
+      breathPhase={breathPhase} 
+      timeLeft={timeLeft} 
+    />
+    <Timer timeLeft={timeLeft} phase={breathPhase} />
+    <Controls 
+      startBreathing={startBreathing} 
+      stopBreathing={stopBreathing} 
+      toggleHold={toggleHold}
+      isBreathing={isBreathing}
+      hold={hold}
+    />
+    
+  </div>
+);
+};
 
 export default App;
