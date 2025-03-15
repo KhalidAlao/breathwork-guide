@@ -1,5 +1,5 @@
 import React from 'react'; 
-import React from './Timer.css'
+import styles from './Timer.css'
 
 
 const Timer = ({ timeLeft, phase }) => {
