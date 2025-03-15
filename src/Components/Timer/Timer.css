@@ -1,0 +1,10 @@
+.timer {
+    margin: 1rem;
+    font-size: 1.5rem;
+    color: #37474f;
+  }
+  
+  .timer h2 {
+    margin: 0;
+    font-weight: 400;
+  }
