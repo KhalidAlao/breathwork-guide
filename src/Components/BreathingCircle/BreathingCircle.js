@@ -22,18 +22,12 @@ const BreathingCircle = ({ isBreathing, breathPhase, timeLeft }) => {
       };
 
 
-    // Decide which animation variant to apply based on the state
-  let currentVariant = breathPhase;
-  if (!isBreathing) {
-    currentVariant = "exhale"; // default to resting state when not active
-  }
 
   return (
     <div className={styles.container}>
       <motion.div 
-        className={styles.circle}
         variants={variants}
-        animate={breathPhase}
+        animate={isBreathing ? breathPhase : "exhale"} 
         initial={false}
       />
       <div className={styles.glow} />

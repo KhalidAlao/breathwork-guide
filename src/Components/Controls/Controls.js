@@ -4,14 +4,29 @@ import styles from './Controls.css'
 
 const Controls = ({ startBreathing, stopBreathing, toggleHold, isBreathing, hold }) => {
     return (
-      <div>
+      <div className={styles.controlsContainer}>
         {!isBreathing ? (
-          <button onClick={startBreathing}>Start</button>
+          <button 
+            className={styles.controlButton}
+            onClick={startBreathing}
+          >
+            Begin Session
+          </button>
         ) : (
-          <>
-            <button onClick={toggleHold}>{hold ? 'Resume' : 'Pause'}</button>
-            <button onClick={stopBreathing}>Stop</button>
-          </>
+          <div className={styles.buttonGroup}>
+            <button
+              className={styles.controlButton}
+              onClick={toggleHold}
+            >
+              {hold ? 'Resume Flow' : 'Pause'}
+            </button>
+            <button
+              className={`${styles.controlButton} ${styles.stopButton}`}
+              onClick={stopBreathing}
+            >
+              Complete Session
+            </button>
+          </div>
         )}
       </div>
     );

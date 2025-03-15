@@ -2,13 +2,12 @@ import React from 'react';
 import styles from './Timer.css'
 
 
-const Timer = ({ timeLeft, phase }) => {
-    return (
-      <div style={{ margin: '1rem' }}>
-        <h2>{phase.charAt(0).toUpperCase() + phase.slice(1)} Time: {timeLeft}s</h2>
-      </div>
-    );
-  };
+const Timer = ({ timeLeft, phase }) => (
+    <div className={styles.timer}>
+      <h3>{phase.toUpperCase()}</h3>
+      <div className={styles.time}>{timeLeft}s</div>
+    </div>
+  );
   
 
 export default Timer;

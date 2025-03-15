@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import BreathingCircle from './Components/BreathingCircle/BreathingCircle';
 import Controls from './Components/Controls/Controls';
 import Timer from './Components/Timer/Timer';
+import './App.css';
 
 const App = () => {
 // State to track if the user's breathing session is active
@@ -18,17 +19,17 @@ const [timeLeft, setTimeLeft] = useState(0);
 
 
 // Durations in seconds for the 4-7-8 breathing method
-  const [inhaleTime, setInhaleTime] = useState(4);
-  const [holdTime, setHoldTime] = useState(7);
-  const [exhaleTime, setExhaleTime] = useState(8);
+  const [inhaleTime] = useState(4);
+  const [holdTime] = useState(7);
+  const [exhaleTime] = useState(8);
 
 
 // Sequence of phases
-  const phases = [
-    { phase: 'inhale', duration: inhaleTime },
-    { phase: 'hold', duration: holdTime },
-    { phase: 'exhale', duration: exhaleTime },
-  ];
+const phases = useMemo(() => [
+  { phase: 'inhale', duration: inhaleTime },
+  { phase: 'hold', duration: holdTime },
+  { phase: 'exhale', duration: exhaleTime },
+], [inhaleTime, holdTime, exhaleTime]);
 
 
     // Reference to track the current phase index in the cycle
@@ -89,7 +90,6 @@ const stopBreathing = () => {
     setTimeLeft((prevTime) => {
       if (prevTime <= 1) {
         clearInterval(intervalRef.current);
-        // Move to the next phase in the cycle
         phaseIndexRef.current = (phaseIndexRef.current + 1) % phases.length;
         const nextPhase = phases[phaseIndexRef.current];
         setBreathPhase(nextPhase.phase);
@@ -101,13 +101,12 @@ const stopBreathing = () => {
   }, 1000);
 
   return () => clearInterval(intervalRef.current);
-}, [isBreathing, hold, timeLeft, inhaleTime, holdTime, exhaleTime]);
-
+}, [isBreathing, hold, timeLeft, inhaleTime, holdTime, exhaleTime, phases]);
 
 
 return (
-  <div style={{ textAlign: 'center', padding: '2rem' }}>
-    <h1>Breath Work Guide</h1>
+  <div className="appContainer">
+    <h1 className="appTitle">Breath Work Guide</h1>
     <BreathingCircle 
       isBreathing={isBreathing} 
       breathPhase={breathPhase} 
@@ -121,9 +120,9 @@ return (
       isBreathing={isBreathing}
       hold={hold}
     />
-    
   </div>
 );
 };
+
 
 export default App;
