@@ -36,31 +36,4 @@ const BreathingCircle = ({ isBreathing, breathPhase, timeLeft }) => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default BreathingCircle;
