@@ -1,5 +1,5 @@
 import React from 'react'; 
-import styles from './Controls.css'
+import styles from './Controls.module.css'
 
 
 const Controls = ({ startBreathing, stopBreathing, toggleHold, isBreathing, hold }) => {
