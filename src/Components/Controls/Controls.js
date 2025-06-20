@@ -7,6 +7,7 @@ const Controls = ({ startBreathing, stopBreathing, toggleHold, isBreathing, hold
       <div className={styles.controlsContainer}>
         {!isBreathing ? (
           <button 
+            aria-label="Begin breathwork session"
             className={styles.controlButton}
             onClick={startBreathing}
           >
@@ -15,12 +16,14 @@ const Controls = ({ startBreathing, stopBreathing, toggleHold, isBreathing, hold
         ) : (
           <div className={styles.buttonGroup}>
             <button
+              aria-label="Pause / Resume breathwork session"
               className={styles.controlButton}
               onClick={toggleHold}
             >
               {hold ? 'Resume Flow' : 'Pause'}
             </button>
             <button
+              aria-label="End breathwork session"
               className={`${styles.controlButton} ${styles.stopButton}`}
               onClick={stopBreathing}
             >
