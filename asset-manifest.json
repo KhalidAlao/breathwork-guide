@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/breathwork-guide/static/css/main.5a214c09.css",
-    "main.js": "/breathwork-guide/static/js/main.db2c1365.js",
+    "main.js": "/breathwork-guide/static/js/main.de83bc26.js",
     "static/js/453.0095e093.chunk.js": "/breathwork-guide/static/js/453.0095e093.chunk.js",
     "index.html": "/breathwork-guide/index.html",
     "main.5a214c09.css.map": "/breathwork-guide/static/css/main.5a214c09.css.map",
-    "main.db2c1365.js.map": "/breathwork-guide/static/js/main.db2c1365.js.map",
+    "main.de83bc26.js.map": "/breathwork-guide/static/js/main.de83bc26.js.map",
     "453.0095e093.chunk.js.map": "/breathwork-guide/static/js/453.0095e093.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5a214c09.css",
-    "static/js/main.db2c1365.js"
+    "static/js/main.de83bc26.js"
   ]
 }
