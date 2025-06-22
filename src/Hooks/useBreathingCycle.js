@@ -32,7 +32,7 @@ const breathingPhases = useMemo(() => [
 // Function to start the breathing session
 const startBreathing = () => {
     // Ensure that breathing times are greater than zero
-    if (breathingPhases[0].duration <= 0 || breathingPhases[2].duration <= 0 ) {
+    if (breathingPhases[0].duration <= 0 || breathingPhases[1].duration <= 0 ) {
       alert("Please input a value greater than zero for inhale and exhale timers.");
       return;
     }
